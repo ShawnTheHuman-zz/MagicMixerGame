@@ -400,12 +400,16 @@ export default class Player1 extends Phaser.Scene {
 
         Send beakers to Player2.
 
+        Sends Time to Player 2 as well.
+
      */
     sendBeakers()
     {
         this.socket.emit('sendRandomBeaker', { beakerC: this.randomBeaker.getBeakerContents() });
 
         this.socket.emit('sendPlayerBeaker', { beakerC: this.beaker.getBeakerContents() });
+
+        this.socket.emit("sendTime", {timeArray: this.stopwatch.digit_values});
 
     }
 

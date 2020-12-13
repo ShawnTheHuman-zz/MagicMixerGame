@@ -7,6 +7,7 @@ import PHMeter from "../helpers/phMeter";
 import ChatBox from "../helpers/chatBox";
 import BasicButton from "../helpers/BasicButton";
 
+import Stopwatch from "../helpers/Stopwatch"
 
 // import Chemical from "../helpers/chemical";
 
@@ -52,6 +53,9 @@ export default class Player2 extends Phaser.Scene {
         this.load.image("mainmenu-scrap", 'src/assets/art/Instructions/PaperScrap-MainMenu.png');
 
 
+        //Stopwatch
+        this.load.image("Stopwatch","src/assets/art/Stopwatch/Stopwatch_base.png");
+
 
     }
 
@@ -61,6 +65,8 @@ export default class Player2 extends Phaser.Scene {
 
         let self = this;
         this.self2 = this;
+
+        this.timeArray = [0,0,0,0];
 
         this.socket = io('http://localhost:3000');
 
@@ -269,6 +275,23 @@ export default class Player2 extends Phaser.Scene {
             self.socket.disconnect();
         });
 
+
+
+        this.stopwatch = new Stopwatch(this);
+
+        this.stopwatch.render(100, 30, "Stopwatch", "LCD");
+
+
+        self.socket.on('getTime', ({timeArray}) => {
+
+            this.stopwatch.loadFromArray(timeArray.timeArray);
+
+            console.log(timeArray.timeArray);
+            console.log(this.stopwatch.digit_values);
+
+            this.stopwatch.renderDigitSprites();
+
+        });
 
 
 

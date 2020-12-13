@@ -105,25 +105,6 @@ export default class Stopwatch
 
        }
    }
-   /*
-        setFromNumber
-
-        Sets the Numbers of this.LCD_Numbers.
-
-        Assume that N is a Number.
-    */
-   setFromNumber(n)
-   {
-       if(n < 0 || n > this.max);
-       {
-           for (let z = 0 ; z < this.digit_values.length; z++ )
-           {
-               this.digit_values[z] = 0;
-
-               this.LCD_numbers[0].setFrame(9);
-           }
-       }
-   }
 
    setMaxNumber()
    {
@@ -145,9 +126,16 @@ export default class Stopwatch
 
                this.LCD_numbers[z].setFrame(0);
            }
-
-
-
    }
+
+   loadFromArray(array)
+   {
+
+       for (let z = 0 ; z < array.length; z++ )
+       {
+           this.digit_values[z] = array[z];
+       }
+   }
+
 
 }

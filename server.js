@@ -82,17 +82,17 @@ io.on('connection', function (socket) {
     });
 
 
-
-
-
-
-
-
     socket.on('newMsgPlayer2', ({ message, name }) => {
         socket.to("room1").emit('getMsgPlayer2', { message, name });
         console.log("Server received msg from Player2: " + message);
     })
 
+    socket.on("sendTime", (timeArray) => {
+
+        console.log(timeArray);
+        socket.to("room1").emit('getTime', {timeArray});
+
+    })
 
     socket.on('disconnect', function () {
         if (socket.id === player1) {

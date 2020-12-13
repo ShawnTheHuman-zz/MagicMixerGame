@@ -38,6 +38,9 @@ const DF1_WATERMIN = 375.0;
 const DF2_WATERMAX = 125.0;
 const DF2_WATERMIN = 375.0;
 
+const RAND_TEMP_MAX = 150;
+const RAND_TEMP_MIN = 50;
+
 
 
 
@@ -131,6 +134,9 @@ export class BeakerContents
 
             this.color = Math.floor(Math.random() * 12) + 1;
 
+            this.temperature = Math.floor((Math.random() * (TEMP_MAX - TEMP_MIN)) + TEMP_MIN);
+
+
 
         }
         else if(difficulty === 3)
@@ -142,6 +148,7 @@ export class BeakerContents
 
             this.color = Math.floor(Math.random() * 12) + 1;;
 
+            this.temperature = Math.floor((Math.random() * (TEMP_MAX - TEMP_MIN)) + TEMP_MIN);
 
 
 
@@ -159,7 +166,7 @@ export class BeakerContents
 
             this.color = Math.floor(Math.random() * 6) + 1;
 
-            //this.water = ()
+            this.temperature = Math.floor((Math.random() * (RAND_TEMP_MAX - RAND_TEMP_MIN)) + RAND_TEMP_MIN);
 
 
         }

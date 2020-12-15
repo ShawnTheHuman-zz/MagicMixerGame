@@ -136,13 +136,14 @@ export class BeakerContents
 
             this.temperature = Math.floor((Math.random() * (TEMP_MAX - TEMP_MIN)) + TEMP_MIN);
 
+            this.water = volume;
 
 
         }
         else if(difficulty === 3)
         {
 
-            let volume = (Math.random() * (BEAKER_LIMIT-40)) + 40;
+            let volume = (Math.random() * (BEAKER_LIMIT-20)) + 20;
 
             this.ph = (Math.random()*13) + 1;
 
@@ -150,7 +151,7 @@ export class BeakerContents
 
             this.temperature = Math.floor((Math.random() * (TEMP_MAX - TEMP_MIN)) + TEMP_MIN);
 
-
+            this.water = volume;
 
         }
         //Default: Difficulty Level 1
@@ -170,8 +171,6 @@ export class BeakerContents
 
 
         }
-
-        console.log("Random Beaker Color: " + this.color);
 
 
     }

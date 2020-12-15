@@ -27,6 +27,8 @@ export default class Instructions extends Phaser.Scene {
 
             this.load.spritesheet("numbers", "src/assets/art/Instructions/Instruction-Numbers.png", {frameWidth: 54, frameHeight: 54})
 
+            this.load.spritesheet("pages", "src/assets/art/Instructions/Instructions_Full_Sheet.png", {frameWidth: 741, frameHeight: 477})
+
         }
 
 
@@ -35,14 +37,18 @@ export default class Instructions extends Phaser.Scene {
 
             let self = this;
 
+            //We start at Page "1," or 0, in this case.
             self.currentPage = 0;
 
+            //Add the background
             let background = self.add.image(0,0,'Background').setOrigin(0,0);;
 
 
+            //Main Menu Background Button.
             let returnButtonScrap = self.add.image(140,42, "MainMenu_Scrap");
 
 
+            //Main Menu
             this.returnButton = new BasicButton({
                 'scene': this,
                 'key':'mainmenu-button',
@@ -59,6 +65,12 @@ export default class Instructions extends Phaser.Scene {
 
             })
 
+            //Add the Actual Instruction Content as Sprites.
+            this.pages = self.add.sprite(16, 83, "pages", 0).setOrigin(0,0);
+
+
+            //Next, the Scene Buttons
+            //Next Page
             this.nextButton = new BasicButton({
                 'scene': this,
                 'key':'pagebutton',
@@ -69,6 +81,7 @@ export default class Instructions extends Phaser.Scene {
                 'y': 530
             });
 
+            //Previous Page
             this.prevButton = new BasicButton({
                 'scene': this,
                 'key':'pagebutton',
@@ -78,6 +91,9 @@ export default class Instructions extends Phaser.Scene {
                 'x': 70,
                 'y': 530
             });
+
+
+
 
             this.nextButton.flipX = true;
 
@@ -102,9 +118,22 @@ export default class Instructions extends Phaser.Scene {
                 self.changePage(1);
             });
 
+
+
+
         }
 
 
+        /*
+            ChangePage
+
+            Change the Page of the Instructions depending on the button pressed.
+
+            Positive 1 = Next Page
+
+            Negative 1 = Previous Page
+
+         */
         changePage(direction)
         {
             if(direction === -1)
@@ -120,6 +149,8 @@ export default class Instructions extends Phaser.Scene {
 
                 this.numberRight.setFrame(2 * this.currentPage + 1);
 
+                this.pages.setFrame(this.currentPage);
+
 
             }
             else if(direction === 1)
@@ -134,6 +165,8 @@ export default class Instructions extends Phaser.Scene {
                 this.numberLeft.setFrame( 2 * this.currentPage);
 
                 this.numberRight.setFrame(2 * this.currentPage + 1);
+
+                this.pages.setFrame(this.currentPage);
 
             }
 

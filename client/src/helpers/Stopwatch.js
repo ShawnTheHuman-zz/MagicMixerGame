@@ -25,8 +25,6 @@ export default class Stopwatch
        this.thisX = 0;
        this.thisY = 0;
 
-       this.max = this.setMaxNumber();
-
        this.LCD_numbers = [0,0,0,0];
 
        this.digit_values = [0,0,0,0];
@@ -106,17 +104,6 @@ export default class Stopwatch
        }
    }
 
-   setMaxNumber()
-   {
-       let m = 0;
-
-       for (let z = 0 ; z > DIGIT_MAX_VAL ; z++)
-       {
-           m = m + DIGIT_MAX_VAL[z]*(Math.pow(10, z));
-
-       }
-       return m;
-   }
 
    resetStopWatch()
    {

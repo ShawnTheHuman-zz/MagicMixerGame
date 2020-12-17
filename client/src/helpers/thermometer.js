@@ -2,20 +2,12 @@
 Thermometer
 
 This class holds the thermometer and hopefully, any child objects that come with it.
-
-
-
-
  */
-
-
 
 const L1_X = -20;
 const L1_Y = -113;
-
 const L2_X = -7;
 const L2_Y = -113;
-
 const L3_X = 6;
 const L3_Y = -113;
 
@@ -29,8 +21,6 @@ export default class Thermometer {
 
         this.currentScene = scene;
 
-
-
         this.thisX = 0;
 
         this.thisY = 0;
@@ -42,15 +32,12 @@ export default class Thermometer {
             //Make the thermometer draggable.
             scene.input.setDraggable(this.thermo_image);
 
-
             this.thisX = x;
             this.thisY = y;
 
             this.originX = x;
 
             this.originY = y;
-
-
 
             //LCD 1 = Tens Digit
             this.LCD_1 = this.currentScene.add.sprite(x + L1_X, y + L1_Y,LCD_sheet,0);
@@ -64,20 +51,12 @@ export default class Thermometer {
 
             return this.thermo_image;
         }
-
     }
 
-
-    returnToOrigin()
-    {
-        this.moveSprite(this.originX, this.originY);
-
-    }
 
     updateTemp(tempVal)
     {
         this.currentTemp = tempVal;
-
         this.updateTempNumbers();
     }
 
@@ -182,11 +161,5 @@ export default class Thermometer {
         this.LCD_3.x = x + L3_X;
         this.LCD_3.y = y + L3_Y;
 
-
-
-
-
     }
-
-
 }

@@ -40,24 +40,6 @@ io.on('connection', function (socket) {
 
     });
 
-
-
-
-
-    // console.log('A user connected: ' + socket.id);
-    // players.push(socket.id);
-    //
-    // if (players.length === 1) {
-    //
-    //     console.log("Setting " + socket.id + " as Player 1");
-    //     io.emit("isPlayer1");
-    //     player1 = socket.id;
-    // }
-    // else if(players.length > 1)
-    // {
-    //     console.log(socket.id + " is Player " + players.length);
-    // }
-
     socket.on('newMsgPlayer1', ({ message, name }) => {
         socket.to("room1").emit('getMsgPlayer1', { message, name });
         console.log("Server received msg from Player1: " + message);
@@ -100,7 +82,7 @@ io.on('connection', function (socket) {
         } else if (socket.id === player2) {
             console.log('Player2 disconnected');
         }
-        // io.emit('disconnect', socket.id);
+
     });
 });
 

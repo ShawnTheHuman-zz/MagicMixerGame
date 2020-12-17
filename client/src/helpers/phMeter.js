@@ -160,7 +160,6 @@ export default class phMeter {
 
     updateNumberPositions()
     {
-
         let x = this.ph_image.x;
         let y = this.ph_image.y;
 
@@ -178,12 +177,6 @@ export default class phMeter {
         this.LCD_3.x = x + L3_X;
 
         this.LCD_3.y = y + L3_Y;
-
-
-
     }
-
-
-
 
 }

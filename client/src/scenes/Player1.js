@@ -8,6 +8,7 @@ import ChatBox from "../helpers/chatBox";
 
 import {BeakerContents} from "../helpers/BeakerContents";
 import Stopwatch from "../helpers/Stopwatch";
+import RecordTimes from "../helpers/RecordTimes";
 
 
 /*
@@ -82,6 +83,11 @@ export default class Player1 extends Phaser.Scene {
         this.load.spritesheet("LCD", "src/assets/art/Player2_Thermometer/LCD_Sheet.png", {frameWidth: 12, frameHeight: 19});
 
         this.load.spritesheet("newgameButton", "src/assets/art/Button/NewGame-Button_Sheet.png", {frameWidth: 61, frameHeight: 81})
+
+
+        //recordPage
+
+        this.load.image("recordPage", "src/assets/art/Instructions/Best_Times_Sheet.png");
 
     }
 
@@ -348,7 +354,7 @@ export default class Player1 extends Phaser.Scene {
                 'up': 0,
                 'over':1,
                 'down':2,
-                'x': 500,
+                'x': 440,
                 'y': 80
             });
 
@@ -389,6 +395,13 @@ export default class Player1 extends Phaser.Scene {
 
         this.beakerUpdateTime = this.time.addEvent({ delay: 1000, callback: this.sendBeakers, callbackScope: this, loop: true });
         //Send Player2 with Both editions of Beaker:
+
+
+
+        //The final new addition:  The Best Time Scoreboard!
+        this.recordTimes = new RecordTimes(this);
+
+        this.recordTimes.render(590, 95, "recordPage");
 
 
 
@@ -458,6 +471,9 @@ export default class Player1 extends Phaser.Scene {
         this.timedEvent.paused = true;
 
         this.newGameButton.y = 70*2;
+
+
+        this.recordTimes.add_new_time(this.stopwatch.getTime_int());
 
 
     }

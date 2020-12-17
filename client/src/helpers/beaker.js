@@ -345,6 +345,13 @@ export default class Beaker {
             return false;
         }
 
+        let temp_difference = beaker1.getTemp() - beaker2.getTemp()
+        if(temp_difference > TEMP_THRESHOLD[difficulty] || temp_difference < -TEMP_THRESHOLD[difficulty])
+        {
+            return false;
+        }
+
+
         //Judge based on PH
 
         let ph_difference = beaker1.returnPH() - beaker2.returnPH();

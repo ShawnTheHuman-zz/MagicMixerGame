@@ -125,4 +125,20 @@ export default class Stopwatch
    }
 
 
+   /*
+        getTime()
+
+           get the time on the clock, but get it as an integer
+    */
+   getTime_int()
+   {
+       let val = 0;
+
+       val = this.digit_values[0] + this.digit_values[1]*10 + this.digit_values[2] * 10 * 60 + this.digit_values[3] * 100 * 60;
+
+       console.log("Stopwatch Int Value: "+ val);
+
+       return val;
+   }
+
 }

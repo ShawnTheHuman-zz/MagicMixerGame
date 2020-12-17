@@ -38,21 +38,11 @@ export default class ChatBox
                 this.chatText.push(scene.add.text(x-75, y+(i*25)-50, '', { font: '12px Courier', fill: '#2c1e31' }));
 
             }
-
-
             this.currentMessage = scene.add.text(x-75, y+90, '',  { font: '13px Courier', fill: '#2c1e31' });
-
-
-
-
 
             return chatPage;
         }
-
-
-
     }
-
 
     /*
         updateStrings
@@ -75,11 +65,9 @@ export default class ChatBox
         for (let x = 0 ; x < MESSAGE_COUNT ; x++) {
             this.chatText[x].text = this.chatSystem.stringArray[x];
         }
-
         this.currentMessage.text = this.chatSystem.currentString;
 
     }
-
 
     /*
         updateCurrentString
@@ -94,7 +82,6 @@ export default class ChatBox
         this.chatSystem.addCharacter(c);
 
         this.currentMessage.text = this.chatSystem.currentString;
-
     }
 
     getCurrentString() {
@@ -105,7 +92,6 @@ export default class ChatBox
         deleteCharacter()
 
         Delete a character from the currentString.
-
         Update currentMessage
 
      */
@@ -116,7 +102,6 @@ export default class ChatBox
         this.currentMessage.text = this.chatSystem.currentString;
 
     }
-
 
     /*
         manualUpdateString
@@ -137,7 +122,5 @@ export default class ChatBox
 
 
     }
-
-
 
 }
